@@ -11,7 +11,7 @@ class Cli
     
     puts <<-welcome
     
-    If you are here its probably because you are interested in learning more about your favorite actor or actress... 
+    If you are here its probably because you are interested in learning more about your favourite actor or actress... 
     Well, you've come to the best place for that!
     
     Tell me, who would you want me to talk to you about :))?
@@ -33,6 +33,10 @@ class Cli
     
     
   end
+  
+  def movie_mood
+     puts "Tell me, what's your vibe right now? I can recommend you #{actor}'s most suitable movie for you right now :))"
+  end 
   
   
   
