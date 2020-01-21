@@ -1,9 +1,8 @@
-require "actorinfo/version"
+#REWUIRE EVERYTHING IN THIS FILE 
 
-module Actorinfo
-  class Error < StandardError; end
-  
-  def 
-  
-  
-end
+require_relative "actorinfo/version"
+require_relative "actorinfo/cli"
+
+
+Cli.new.start
+
