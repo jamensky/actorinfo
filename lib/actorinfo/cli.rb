@@ -1,3 +1,5 @@
+require_relative "scraper.rb"
+
 class Cli
   
   #attr_accessor 
