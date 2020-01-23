@@ -6,6 +6,3 @@ require_relative "actorinfo/actors_actresses"
 require_relative "actorinfo/user"
 
 
-Cli.new.initialize 
-
-puts Cli.all

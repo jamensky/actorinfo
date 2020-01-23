@@ -38,10 +38,16 @@ class Cli
      @info = gets.chomp()
      
      puts "Ok, hear this out..."
+     
+     self.scraped_actor(name, info)
     
      @@all << self 
     
   end
+  
+  def scraped_actor(actor, info)
+    
+  end 
   
   def movie_mood
      puts "Tell me, what's your vibe right now? I can recommend you #{actor}'s most suitable movie for you right now :))"
