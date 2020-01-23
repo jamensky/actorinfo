@@ -2,7 +2,10 @@
 
 require_relative "actorinfo/version"
 require_relative "actorinfo/cli"
+require_relative "actorinfo/actors_actresses"
+require_relative "actorinfo/user"
 
 
-Cli.new.start
+Cli.new.initialize 
 
+puts Cli.all
