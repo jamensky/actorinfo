@@ -1,15 +1,16 @@
 require_relative "scraper.rb"
+require'pry'
 
 class Cli
   attr_accessor :name, :actor, :info
   
   @@all = []
   
-  def initialize
+  def initialize 
       
      puts "Hello Mr visitor! What is your name?"
-     name = gets.chomp()
-     puts "Welcome to Actorinfo #{name}!"  
+     @name = gets.chomp()
+     puts "Welcome to Actorinfo #{@name}!"  
 
     
      puts <<-welcome.gsub(/\s+/, " ").strip 
@@ -20,20 +21,23 @@ class Cli
        Tell me, who would you want me to talk to you about :))?
      welcome
     
-     actor = gets.chomp() 
+     @actor = gets.chomp() 
     
-     puts "OMG!!! #{actor}!! One of my favourites too!! Ok, here's what I can tell you:"
+     puts "OMG!!! #{@actor}!! One of my favourites too!! Ok, here's what I can tell you."
     
      puts <<-info
     
-          1. Oscar wins
-          2. Age
-          3. Best movies 
+          1. Age
+          2. Date of birth
+          3. Best movies
+          4. Oscar wins
     
-       Which one interests you the most?"
+       Which one interests you the most? enter a digit from 1 to 4."
      info
     
-     info = gets.chomp()
+     @info = gets.chomp()
+     
+     puts "Ok, hear this out..."
     
      @@all << self 
     
