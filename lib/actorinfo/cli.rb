@@ -1,8 +1,9 @@
-require_relative "scraper.rb"
-require'pry'
+require_relative 'scraper.rb'
+require 'pry'
 
 class Cli
   attr_accessor :name, :actor, :info
+  
   
   @@all = []
   

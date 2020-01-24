@@ -6,3 +6,4 @@ require_relative "actorinfo/actors_actresses"
 require_relative "actorinfo/user"
 
 
+puts Scraper.new.scraped_act  
