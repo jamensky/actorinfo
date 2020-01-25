@@ -2,8 +2,8 @@
 
 require_relative "actorinfo/version"
 require_relative "actorinfo/cli"
-require_relative "actorinfo/actors_actresses"
+require_relative "actorinfo/actors_class"
 require_relative "actorinfo/user"
 
-
-puts Scraper.new.scraped_act  
+Scraper.new.scrape 
+ 
