@@ -1,4 +1,4 @@
-require 'actors_class'
+require_relative 'actors_class'
 require 'nokogiri'
 require 'open-uri'
 require 'pry'
@@ -6,7 +6,7 @@ require 'pry'
 
 class Scraper 
   
-  attr_accessor :name, :age #, :date_of_birth, :movies, :oscar
+  #attr_accessor :name, :age #, :date_of_birth, :movies, :oscar
  
   @@all = []
   
@@ -16,23 +16,20 @@ class Scraper
     actor = doc.css('.pure-u-1')
     
     actor.each do |person|
-      info_link = person.css('a')[0]['href'] # this access a secondary link on the webpage with further details
+     info_link = Nokogiri::HTML(open(person.css('a')[0]['href']))  # this will open and access a secondary link in the webpage containing further details.
+      
 
       new_actor = Actor.new
       new_actor.name = person.css('a').text.strip 
-      new_actor.age = doc_2 = Nokogiri::HTML(open(details)).css('p')[4].css('b')[0].text
+      new_actor.age = info_link.css('p')[4].css('b')[0].text
+      new_actor.dob = info_link.css('p')[4].css('b')[1].text
+      new_actor.place_of_b = info_link.css('p')[5].css('b').text
       
       binding.pry 
       
       
     end 
-=begin
-    details = actor.css('a')[0]['href']
-    doc_2 = Nokogiri::HTML(open(details))
-    
-    @age = doc_2.css('p')[4].css('b')[0].text
-=end 
-    
+
     @@all << self 
   end 
   
