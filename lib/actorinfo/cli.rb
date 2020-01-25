@@ -1,4 +1,5 @@
 require_relative 'scraper'
+require_relative 'actors_class'
 require 'pry'
 
 class Cli
@@ -40,7 +41,7 @@ class Cli
      
      puts "Ok, hear this out..."
      
-     self.scraped_actor(name, info)
+     self.r(name, info)
     
      @@all << self 
     

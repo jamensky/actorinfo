@@ -11,5 +11,13 @@ class Actor
     @@all << self 
   end 
   
+  def self.all 
+    @@all 
+  end 
+  
+  def find(actor_name)
+    @@all.each do {|actor| actor.name == actor_name}
+  end 
+  
 end 
   
