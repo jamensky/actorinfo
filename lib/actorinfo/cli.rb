@@ -31,8 +31,7 @@ class Cli
     
           1. Age
           2. Date of birth
-          3. Best movies
-          4. Oscar wins
+          3. Place of birth 
     
        Which one interests you the most? enter a digit from 1 to 4."
      info
@@ -41,14 +40,14 @@ class Cli
      
      puts "Ok, hear this out..."
      
-     self.r(name, info)
+     
     
      @@all << self 
     
   end
   
-  def scraped_actor(actor, info)
-    
+  def get_info 
+    Actors.find
   end 
   
   def movie_mood

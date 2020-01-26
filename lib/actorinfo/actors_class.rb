@@ -15,8 +15,9 @@ class Actor
     @@all 
   end 
   
-  def find(actor_name)
-    @@all.each do {|actor| actor.name == actor_name}
+  def self.find(actor_name)
+    Actor.all.each {|actor| actor.name == actor_name}
+    binding.pry 
   end 
   
 end 
