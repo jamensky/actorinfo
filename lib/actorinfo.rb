@@ -5,6 +5,4 @@ require_relative "actorinfo/cli"
 require_relative "actorinfo/actors_class"
 require_relative "actorinfo/user"
 
-Scraper.new.scrape
-puts Actor.all 
- 
+Scraper.new.scrape("chris pine")
