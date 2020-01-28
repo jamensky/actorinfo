@@ -24,12 +24,6 @@ class Scraper
     @@all << self
   end
 
-  def find_actor(name)
-    if scrape == name
-      return true
-    end
-  end
-
   def create_actor(actor)
     info_link = Nokogiri::HTML(open(actor.css('a')[0]['href']))  # this will open and access a secondary link in the webpage containing further details.
 

@@ -7,4 +7,4 @@ require_relative "actorinfo/version"
 
 
 Scraper.new.scrape("chris pine")
-puts Actor.actor_info("chris pine", dob)
+puts Actor.actor_info("chris pine", 1)

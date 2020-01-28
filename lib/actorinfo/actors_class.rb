@@ -3,7 +3,7 @@ require 'pry'
 
 
 class Actor
-  attr_accessor :name, :age, :dob, :place_of_b
+  attr_accessor :name, :age, :dob, :place_of_b, :info
 
   @@all = []
 
@@ -15,12 +15,23 @@ class Actor
     @@all
   end
 
-  def self.find_actor(actor_name)
-    Actor.all.each{|actor| actor.name == actor_name}
-  end
+  def self.actor_info(actor_name, info = nil)
+    x = []
+    Actor.all.each do |actor|
+      x << actor.name == actor_name
 
-  def self.actor_info(name, info)
-    Actor.find_actor(name).info
+     if x
+      if info == 1
+        return actor.name
+      elsif info == 2
+        return actor.dob
+      elsif info == 3
+        return actor.place_of_b
+      end
+     end
+
+   end
+
   end
 
 end
