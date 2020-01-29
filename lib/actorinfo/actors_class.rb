@@ -21,7 +21,7 @@ class Actor
       if info == 1
         return "He is #{actor.age}! And he doesn't even look it ;)"
       elsif info == 2
-        return "you definitely want to mark this on your calendar; His birthday is #{actor.dob}"
+        return "you definitely want to mark this on your calendar; His birthday is #{actor.dob}."
       elsif info == 3
         return "Have you ever been to #{actor.place_of_b}? well, that's where he's from :)"
       end

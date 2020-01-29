@@ -16,7 +16,6 @@ class Cli
 
 
      puts <<-welcome.gsub(/\s+/, " ").strip
-
        If you are here its probably because you are interested in learning more about your favourite actor.
        Well, you've come to the best place for that!
 
@@ -24,6 +23,29 @@ class Cli
      welcome
 
      @actor = gets.chomp().downcase
+
+    while check_and_return_actor(actor) == nil
+      #binding.pry
+     if check_and_return_actor(actor)
+        check_and_return_actor(actor)
+        break
+     else
+        puts "#{@actor.split.first.capitalize()} who? I am sorry, never heard of :( ... Why don't you try someone else? (type yes or no)"
+        answer = gets.chomp().to_s.downcase
+         if answer == "yes"
+           puts "Ok, shoot another name ;)"
+           @actor = gets.chomp().downcase
+           check_and_return_actor(actor)
+         elsif answer == "no"
+           puts "Oh what a shame you are going :( Try come back in few days - I am sure we will have your actor available ;)"
+           break
+         end
+     end
+
+   end
+   end
+
+   def check_and_return_actor(actor)
      if Scraper.new.scrape(actor)
        puts "OMG!!! #{@actor}!! One of my favourites too!! Ok, here's what I can tell you."
 
@@ -38,17 +60,11 @@ class Cli
 
        @info = gets.chomp().to_i
        get_info(actor, info)
-
-     else
-       puts "#{@actor.split.first} who? I sm sorry, never heard of. Why don't you try someone else ;)"
      end
-
   end
 
   def get_info(actor, info)
-    x = Actor.actor_info(actor, info)
-    #binding.pry
-   puts "Ok, hear this out...#{x}"
+    puts "Ok, hear this out...#{Actor.actor_info(actor, info)}"
   end
 
 

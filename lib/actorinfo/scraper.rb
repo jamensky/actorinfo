@@ -6,20 +6,21 @@ require 'pry'
 
 class Scraper
 
-  #attr_accessor :name, :age #, :date_of_birth, :movies, :oscar
-
   @@all = []
   @@doc = Nokogiri::HTML(open('https://www.listal.com/list/american-actors-under-40')).css('.pure-u-1')
 
   def scrape(name)
-
+   i = 0
      @@doc.each do |actor|
 
       if actor.css('a').text.strip.downcase == name
         create_actor(actor)
         break
       end
-
+      i+=1
+      if i == 49
+        return nil
+      end
      end
     @@all << self
   end
@@ -33,7 +34,6 @@ class Scraper
     new_actor.dob = info_link.css('p')[4].css('b')[1].text
     new_actor.place_of_b = info_link.css('p')[5].css('b').text
     new_actor
-    #binding.pry
   end
 
   def self.all
