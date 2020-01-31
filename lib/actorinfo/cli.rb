@@ -1,9 +1,10 @@
 require_relative 'scraper'
 require_relative 'actors_class'
+require_relative 'user'
 require 'pry'
 
 class Cli
-  attr_accessor :name, :actor, :info
+  attr_accessor :name, :actor, :actor_2, :info, :info_2
 
 
   @@all = []
@@ -16,7 +17,7 @@ class Cli
 
 
      puts <<-welcome.gsub(/\s+/, " ").strip
-       If you are here its probably because you are interested in learning more about your favourite actor.
+       If you are here its probably because you are interested in learning more about your favourite under 30 actor actor.
        Well, you've come to the best place for that!
 
        Tell me, who would you want me to talk to you about :))?
@@ -24,30 +25,19 @@ class Cli
 
      @actor = gets.chomp().downcase
 
-    while check_and_return_actor(actor) == nil
-      #binding.pry
-     if check_and_return_actor(actor)
-        check_and_return_actor(actor)
-        break
-     else
-        puts "#{@actor.split.first.capitalize()} who? I am sorry, never heard of :( ... Why don't you try someone else? (type yes or no)"
-        answer = gets.chomp().to_s.downcase
-         if answer == "yes"
-           puts "Ok, shoot another name ;)"
-           @actor = gets.chomp().downcase
-           check_and_return_actor(actor)
-         elsif answer == "no"
-           puts "Oh what a shame you are going :( Try come back in few days - I am sure we will have your actor available ;)"
-           break
-         end
-     end
+      if !check_and_return_actor(actor)
+        puts "#{@actor.split.first.capitalize()} who? I am sorry, never heard of :( ... Why don't you try someone else..."
+
+      else
+        puts "yes"
+      end
 
    end
-   end
+
 
    def check_and_return_actor(actor)
      if Scraper.new.scrape(actor)
-       puts "OMG!!! #{@actor}!! One of my favourites too!! Ok, here's what I can tell you."
+       puts "OMG!!! #{actor.upcase}!! One of my favourites too!! Ok, here's what I can tell you."
 
        puts <<-info
 
@@ -65,6 +55,35 @@ class Cli
 
   def get_info(actor, info)
     puts "Ok, hear this out...#{Actor.actor_info(actor, info)}"
+
+    puts <<-info
+    Pretty cool huh :))
+
+         Alright, what do you fancy doing next?
+
+           1. Know more about this actor
+           2. Try another actor
+           3. Exit
+    info
+
+    @info_2 = gets.chomp().to_i
+
+    if info_2 == 1
+       check_and_return_actor(actor)
+    elsif info_2 == 2
+      puts "Ok, who else do you have in mind?"
+       @actor_2 = gets.chomp().downcase
+      puts "let me see if I have this one...."
+       check_and_return_actor(actor_2)
+    elsif info_2 == 3
+      "Oh such a shame you are going. Come visit us again soon :)"
+       save_user(name, actor)
+    end
+  end
+
+
+  def save_user(name, actor)
+    User.new(name, actor)
   end
 
 
@@ -72,12 +91,31 @@ class Cli
      puts "Tell me, what's your vibe right now? I can recommend you #{actor}'s most suitable movie for you right now :))"
   end
 
+
   def self.all
     @@all
   end
+
 
   def self.clear
     @@all.clear
   end
 
 end
+
+=begin
+check_and_return_actor(actor)
+break
+else
+puts "#{@actor.split.first.capitalize()} who? I am sorry, never heard of :( ... Why don't you try someone else? (type yes or no)"
+re_try = gets.chomp().to_s.downcase
+ if re_try == "yes"
+   puts "Ok, shoot another name ;)"
+   @actor = gets.chomp().downcase
+   check_and_return_actor(actor)
+ elsif re_try == "no"
+   puts "Oh what a shame you are going :( Try come back in few days - I am sure we will have your actor available ;)"
+   break
+ end
+
+=end
