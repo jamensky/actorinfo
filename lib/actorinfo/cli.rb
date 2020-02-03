@@ -17,43 +17,47 @@ class Cli
 
 
      puts <<-welcome.gsub(/\s+/, " ").strip
-       If you are here its probably because you are interested in learning more about your favourite under 30 actor actor.
+       If you are here its probably because you are interested in learning more about your favourite under 40s actor.
        Well, you've come to the best place for that!
 
        Tell me, who would you want me to talk to you about :))?
      welcome
 
      @actor = gets.chomp().downcase
-
-      if !check_and_return_actor(actor)
-        puts "#{@actor.split.first.capitalize()} who? I am sorry, never heard of :( ... Why don't you try someone else..."
-
-      else
-        puts "yes"
-      end
-
+     check_and_return(actor)
    end
 
-
-   def check_and_return_actor(actor)
-     if Scraper.new.scrape(actor)
-       puts "OMG!!! #{actor.upcase}!! One of my favourites too!! Ok, here's what I can tell you."
-
-       puts <<-info
-
-            1. Age
-            2. Date of birth
-            3. Place of birth
-
-         Which one interests you the most? enter a digit from 1 to 4."
-       info
-
-       @info = gets.chomp().to_i
-       get_info(actor, info)
-     end
+  def check_and_return(actor)
+   if check_actor(actor)
+     puts "OMG!!! #{actor.upcase}!! One of my favourites too!!"
+     get_info(actor)
+   else
+     no_actor_found(actor)
+   end
   end
 
-  def get_info(actor, info)
+   def check_actor(actor)
+       Scraper.new.scrape(actor)
+   end
+
+  def no_actor_found(actor)
+    puts "#{@actor.split.first.capitalize()} who? I am sorry, never heard of :( ... lets try someone else ;)"
+    actor_3 = gets.chomp().downcase
+    check_and_return(actor_3)
+  end
+
+  def get_info(actor)
+
+    puts <<-info
+     Ok, here's what I can tell you - (enter 1 to 3)
+
+        1. Age
+        2. Date of birth
+        3. Place of birth
+    info
+
+    @info = gets.chomp().to_i
+
     puts "Ok, hear this out...#{Actor.actor_info(actor, info)}"
 
     puts <<-info
@@ -67,55 +71,37 @@ class Cli
     info
 
     @info_2 = gets.chomp().to_i
+    next_option(info_2, actor)
+  end
 
+  def next_option(info_2, actor)
     if info_2 == 1
-       check_and_return_actor(actor)
+       get_info(actor)
     elsif info_2 == 2
       puts "Ok, who else do you have in mind?"
        @actor_2 = gets.chomp().downcase
       puts "let me see if I have this one...."
-       check_and_return_actor(actor_2)
+       if check_actor(actor_2)
+         get_info(actor_2)
+       else
+         no_actor_found(actor_2)
+       end
     elsif info_2 == 3
-      "Oh such a shame you are going. Come visit us again soon :)"
+      puts "Oh such a shame you are going. Come visit us again any time you want :)"
        save_user(name, actor)
     end
   end
-
 
   def save_user(name, actor)
     User.new(name, actor)
   end
 
-
-  def movie_mood
-     puts "Tell me, what's your vibe right now? I can recommend you #{actor}'s most suitable movie for you right now :))"
-  end
-
-
   def self.all
     @@all
   end
-
 
   def self.clear
     @@all.clear
   end
 
 end
-
-=begin
-check_and_return_actor(actor)
-break
-else
-puts "#{@actor.split.first.capitalize()} who? I am sorry, never heard of :( ... Why don't you try someone else? (type yes or no)"
-re_try = gets.chomp().to_s.downcase
- if re_try == "yes"
-   puts "Ok, shoot another name ;)"
-   @actor = gets.chomp().downcase
-   check_and_return_actor(actor)
- elsif re_try == "no"
-   puts "Oh what a shame you are going :( Try come back in few days - I am sure we will have your actor available ;)"
-   break
- end
-
-=end
