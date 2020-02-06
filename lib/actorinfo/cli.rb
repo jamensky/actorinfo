@@ -4,7 +4,7 @@ require_relative 'user'
 require 'pry'
 
 class Cli
-  attr_accessor :name, :actor, :actor_2, :info, :info_2
+  attr_accessor :user_name, :actor, :actor_2, :info, :info_2
 
 
   @@all = []
@@ -12,8 +12,8 @@ class Cli
   def initialize
 
      puts "Hello Mr visitor! What is your name?"
-     @name = gets.chomp()
-     puts "Welcome to Actorinfo #{@name}!"
+     @user_name = gets.chomp()
+     puts "Welcome to Actorinfo #{@user_name}!"
 
 
      puts <<-welcome.gsub(/\s+/, " ").strip
@@ -88,12 +88,12 @@ class Cli
        end
     elsif info_2 == 3
       puts "Oh such a shame you are going. Come visit us again any time you want :)"
-       save_user(name, actor)
+       save_user(user_name, actor)
     end
   end
 
-  def save_user(name, actor)
-    User.new(name, actor)
+  def save_user(user_name, actor)
+    User.new(user_name, actor)
   end
 
   def self.all
