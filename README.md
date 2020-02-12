@@ -1,45 +1,39 @@
-Hello World!
+WELCOME TO ACTORINFO!
 
-# Actorinfo
+This is an application that uses scraper functionalities to access Listal.com website in order to retrieve specific information as requested by the user. The information requested by the user is to be limited to male actors of the age of 40 years old or below. The application will be able to provide three types of information; Age, date of birth and place of birth.  
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/actorinfo`. To experiment with that code, run `bin/console` for an interactive prompt.
+Have fun with it! 
 
-TODO: Delete this and the text above, and describe your gem
 
-## Installation
+INSTALLATION
 
-Add this line to your application's Gemfile:
+1. Follow the following link to the gem repository: https://github.com/jamensky/actorinfo
 
-```ruby
-gem 'actorinfo'
-```
+2. Click on the green coloured CLONE/DOWNLOAD button. On the drop down menu, click on the black arrow to copy the remote link.
 
-And then execute:
+3. In your terminal type "git clone" followed by the remote link you have copied and press enter.  
 
-    $ bundle
+4. Change directory by typing "cd actorinfo/lib".
 
-Or install it yourself as:
+5. In your terminal, type and send "bundle install" to download all gem dependencies.
 
-    $ gem install actorinfo
 
-## Usage
+USAGE
 
-TODO: Write usage instructions here
+In your terminal, enter "ruby actorinfo.rb". Upon the start of the application you will be welcomed by a welcome text appearing in the console. You will  be requested to begin by entering your name and the name of an actor of your choice. The console will be able to accept only full names of male actors, of the age of 40 years old or below. This initial data will then be used to create and save an account for you, in the system, in the form of a class instance. Beyond this stage, the application will be guiding you through the services that it offers, to which you can respond to/select by entering specific answers directly into the console. The accepted answers have been predefined and will be shown to you through the text in the console.
 
-## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-## Contributing
+
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/'adept-innovator-9799'/actorinfo. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-## License
+ 
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-## Code of Conduct
 
 Everyone interacting in the Actorinfo project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/'adept-innovator-9799'/actorinfo/blob/master/CODE_OF_CONDUCT.md).
