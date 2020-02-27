@@ -41,7 +41,7 @@ class Cli
    end
 
   def no_actor_found(actor)
-    puts "#{@actor.split.first.capitalize()} who? I am sorry, never heard of :( ... lets try someone else ;)"
+    puts "#{actor.split.first.capitalize()} who? I am sorry, never heard of :( ... lets try someone else ;)"
     actor_3 = gets.chomp().downcase
     check_and_return(actor_3)
   end

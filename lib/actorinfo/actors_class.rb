@@ -9,8 +9,6 @@ class Actor
 
   def initialize
     @@all << self
-    binding.pry
-
   end
 
   def self.all
